@@ -1,0 +1,69 @@
+<a class="main-header__icon notification__icon"
+   ngClass="{{openned ? 'active' : '' }}"
+   (click)="openned=!openned">
+    <mat-icon svgIcon="notification"></mat-icon>
+    <span class="notification__badge"
+          [ngClass]="{ 'hidden' : notifications.length == 0 }">
+            {{notifications.length}}
+    </span>
+</a>
+<div class="notification__panel-background"
+     ngClass="{{openned ? '' : 'hidden' }}"
+     (click)="openned=!openned">
+</div>
+<div class="notification__panel-container"
+    ngClass="{{openned ? '' : 'hidden' }}">
+    <mat-tab-group class="tab" animationDuration="0ms">
+        <mat-tab label="Notificaciones">
+            <ng-template matTabContent>
+                <section class="notification__panel">
+                    <header *ngIf="1==0" class="notification__panel-header">
+                        Notificaciones
+                    </header>
+                    <section class="notification__panel-body">
+                        <p *ngIf="notifications.length == 0" class="notification__panel-placeholder">
+                            Todavía no tienes notificaciones
+                        </p>
+                        <div *ngFor="let notification of notifications" 
+                            class="notification__panel-item notification__panel-item--unread" 
+                            (click)="openItem(notification)">
+                            {{notification.message}}
+                        </div>
+                    </section>
+                    <footer class="notification__panel-footer">
+                        Ir al Centro de Notificaciones
+                    </footer>
+                </section>
+                <section #panel_opened class="notification__panel notification__panel-opened">
+                    <header class="notification__panel-header--opened">
+                        <span (click)="goBack()" class="notification__go-back">&lt; Volver a notificaciones</span>
+                    </header>
+                    <section *ngIf="notification" class="notification__panel-body--opened">
+                        <div class="notification__panel-title--opened">
+                            <h3>{{notification.title}}</h3>
+                            <small>{{notification.type}}</small>
+                        </div>
+                        <section class="notification__panel-content--opened">
+                            {{notification.message}}
+                        </section>
+                    </section>
+                </section>
+                {{getContentLoaded(1)}}
+            </ng-template>
+        </mat-tab>
+        <mat-tab label="Eventos">
+            <ng-template matTabContent>
+                <section  *ngIf="!graphAuthenticated" class="cal-panel-placeholder">
+                    <p>Inicie Sesión en Microsoft para acceder al calendario.</p>
+                    <button class="login-graph"
+                            (click)="signIn()">
+                        <mat-icon svgIcon="microsoft"></mat-icon>Ingresar con Microsoft
+                    </button>
+                </section>
+                <app-calendar *ngIf="graphAuthenticated"></app-calendar>
+                {{getContentLoaded(2)}}
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+

@@ -1,1 +1,181 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+*,*::before,*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.main-header {
+    display          : flex;
+    justify-content  : space-between;
+    align-items      : center;
+    background-color : #122237;
+    width            : 100%;
+    height           : 3em;
+}
+.main-header__logo { margin: 0; }
+
+.main-header__icon {
+    color   : white;
+    padding : .95em;
+}
+
+.main-header__icon:hover,
+.main-header__icon.active {
+    cursor           : pointer;
+    color            : white;
+    background-color : #0085AE;
+}
+.hidden { display: none; }
+
+
+/**
+* ESTILOS DE TABS
+*/
+.tab.mat-tab-group .mat-tab-header { border-bottom-color: #B0BDD0 !important;}
+.tab.mat-tab-group .mat-tab-label {
+    opacity       : 1;
+    height        : 3em;
+    border-radius : 3px 3px 0 0;
+    user-select   : none;
+}
+
+.tab.mat-tab-group .mat-tab-label:hover:not(.mat-tab-label-active) { 
+    color            : #4278BA !important; 
+    background-color : #F6F9FF; 
+}
+.tab.mat-tab-group .mat-tab-label.mat-tab-label-active { 
+    font-weight : 700; 
+}
+.mat-tab-label .mat-tab-label-content { 
+    color       : #4278BA !important; 
+    font-weight : 400;
+}
+
+.tab.mat-tab-group .mat-tab-body-wrapper { 
+    border-radius : 0 0 .25rem .25rem;
+}
+.tab.mat-tab-group .mat-tab-body {
+    height           : 500px;
+    background-color : #F4F5F7;
+}
+.mat-tab-body-content { overflow: hidden !important; }
+
+.mat-focus-indicator.mat-tab-label-active {
+    background-color : #F4F5F7;
+}
+.mat-ink-bar {
+    background-color : #4278BA !important; 
+}
+
+
+/**
+* ESTILOS DEL CALENDARIO
+*/
+.cal-panel-placeholder {
+    display         : flex;
+    flex-direction  : column;
+    justify-content : center;
+    align-items     : center;
+    width           : 100%;
+    height          : 100%;
+}
+.cal-nav-icons {
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    width           : 35px;
+    height          : 30px;
+    color           : #0069B0;
+    cursor          : pointer;
+    margin          : 1em .2em;
+}
+.cal-nav-icons:hover { 
+    background-color : #EDEDED;
+    border-radius    : 4px;
+    box-shadow       : 2px 2px 3px 0 rgba(0, 0, 0, 0.3);;
+}
+.cal-header-title {
+    color      : #41526D;
+    font-size  : .5em;
+    margin-top : 1.5em;
+}
+.cal-month-view .cal-header {
+    color            : #41526D;
+    background-color : #F4F5F7;
+    font-weight      : 300;
+}
+.cal-month-view .cal-days .cal-cell-row {
+    border-bottom-color : #E4E7EB;
+}
+.cal-month-view .cal-day-cell {
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    min-height      : 40px;
+}
+.cal-month-view .cal-day-cell:not(:last-child) {
+    border-right-color : #E4E7EB;
+}
+.cal-month-view .cal-cell-top {
+    min-height      : 40px;
+    position        : relative;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+}
+.cal-month-view .cal-day-badge {
+    position         : absolute;
+    top              : 0;
+    right            : -25px;
+    background-color : #0085AE;
+}
+.cal-today .cal-day-badge { right: -18px; }
+.cal-month-view .cal-out-month .cal-day-badge {
+    opacity : 1;
+}
+.cal-month-view .cal-day-number {
+    margin-top    : 0;
+    margin-right  : 0;
+    margin-bottom : 0;
+    font-size     : 1em;
+}
+.cal-month-view .cal-day-cell.cal-today .cal-day-number { 
+    display          : flex;
+    justify-content  : center;
+    align-items      : center;
+    font-size        : 1em; 
+    background-color : #006AB2;
+    color            : white;
+    width            : 30px;
+    height           : 30px;
+    opacity          : 1;
+    border-radius    : 50%;
+}
+.cal-month-view .cal-events {
+    display : none;
+}
+.cal-month-view .cal-open-day-events {
+    background-color : #F4F5F7; /*122237*/
+    color            : #41526D;
+    overflow-x       : hidden !important;
+    overflow-y       : scroll !important;
+    max-height       : 145px;
+    box-shadow       : none;
+    border-bottom    : 1px solid #E4E7EB;
+}
+.cancelled {
+    color           : #AAA;
+    text-decoration : line-through;
+}
+
+/**
+* PROGRESS BAR
+*/
+.mat-progress-bar { height : 2px !important; }
+.mat-progress-bar-fill, .mat-progress-bar-fill::after { background-color : #006AB2; }  
+.mat-progress-bar-buffer { background-color : #0085AE }

@@ -1,0 +1,15 @@
+<a [matMenuTriggerFor]="menu"
+   class="main-header__icon">
+    <mat-icon svgIcon="user" *ngIf="!user"></mat-icon>
+    <img *ngIf="user" [src]="getAvatar(user)" class="user_avatar">
+</a>
+<mat-menu #menu="matMenu">
+    <div mat-menu-item class="user-item" (click)="me()">
+        <mat-icon svgIcon="user"></mat-icon>
+        <span>Perfil</span>
+    </div>
+    <div mat-menu-item class="user-item" (click)="logout()">
+        <mat-icon svgIcon="user"></mat-icon>
+        <span>Cerrar Sesión</span>
+    </div>
+</mat-menu>

@@ -1,0 +1,67 @@
+<app-progress-indicator></app-progress-indicator>
+<div class="row text-center">
+    <div class="col-md-4 d-flex ml-3">
+      <div class="cal-nav-icons">
+        <mat-icon svgIcon="previous"
+                  mwlCalendarPreviousView
+                  [view]="view"
+                  [(viewDate)]="viewDate"
+                  (viewDateChange)="closeOpenMonthViewDay()"
+                  (click)="getGraphEvents()">
+        </mat-icon>
+      </div>
+      <div class="cal-nav-icons">
+        <mat-icon svgIcon="home"
+                  mwlCalendarToday
+                  [(viewDate)]="viewDate"
+                  (click)="getGraphEvents()">
+        </mat-icon>
+      </div>
+      <div class="cal-nav-icons">
+        <mat-icon svgIcon="next"
+                  mwlCalendarNextView
+                  [view]="view"
+                  [(viewDate)]="viewDate"
+                  (viewDateChange)="closeOpenMonthViewDay()"
+                  (click)="getGraphEvents()">
+        </mat-icon>
+      </div>
+    </div>
+    <div class="col-md-4 cal-header-title">
+      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
+<br />
+<div [ngSwitch]="view">
+    <mwl-calendar-month-view #calendarMonth
+      *ngSwitchCase="CalendarView.Month"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      [activeDayIsOpen]="activeDayIsOpen"
+      (dayClicked)="dayClicked($event.day)"
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view
+      *ngSwitchCase="CalendarView.Week"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-week-view>
+    <mwl-calendar-day-view
+      *ngSwitchCase="CalendarView.Day"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-day-view>
+</div>

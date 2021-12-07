@@ -1,0 +1,11 @@
+<div class="container-fluid">
+    <div class="row">
+        <header class="col main-header">
+          <mat-icon svgIcon="microsoft"></mat-icon>
+          <section>
+            <app-notifications *ngIf="authenticated"></app-notifications>
+            <app-user *ngIf="authenticated"></app-user>
+          </section>
+        </header>
+    </div>
+</div>

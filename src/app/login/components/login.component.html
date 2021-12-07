@@ -1,0 +1,11 @@
+<div class="login-background">
+    <div class="login-form">
+        <h1>Iniciar Sesión</h1>
+        <fieldset *ngIf="!graphAuthenticated" class="login-field-buttons">
+            <button class="login-graph"
+                    (click)="signIn()">
+                <mat-icon svgIcon="microsoft"></mat-icon>Ingresar con Microsoft
+            </button>
+        </fieldset>
+    </div>
+</div>
